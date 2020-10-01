@@ -1,0 +1,13 @@
+192.123.43.9
+192.134.9.23
+255.255.0.0
+192.123.0.0
+
+IP1:   192.123. 43.  9
+IP1:   192.134.  9. 23
+Sum:   128.  1. 52. 32
+Dif:     0.245. 34.242
+IP1 <= IP2
+IP1 < IP2
+IP1 belongs to the net
+IP2 does not belong to the net
