@@ -1,36 +1,46 @@
 // Written by VSNelyubin, m80-206b-19, Original Code, do not steal!
+/*
+Создать класс IPAddress для работы с адресом в интернет. Класс состоит из четырех чисел unsigned char (a,b,c,d).
+Реализовать арифметические операции сложения, вычитания, а также операции сравнения (для сравнение на больше/меньше считать что левые байты главнее т.е. вначале сравниваются первые байты, потом вторые и т.д.).
+Так же реализовать функцию, которая будет определять принадлежность адреса к подсети по адресу подсети (a1,b1,c1,d1) и битовой маске подсети (a2,b2,c2,d2).
+Например, адрес 192.168.1.30 принадлежит подсети 192.168.0.0 с маской 255.255.0.0.
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
+#pragma once
 
 using namespace::std;
 
 class IPAdress {
 public:
     unsigned char f,t,s,o;
+
     void setData2(unsigned char ff,unsigned char tt,unsigned char ss,unsigned char oo){
         f=ff;t=tt;s=ss;o=oo;
     }
     int setdata(string inp){
 	int stmp;
-        string inpu=inp;
-        stmp=inpu.find_first_not_of("0123456789");
-	if(stmp==0){return 1;}
-        f=stoi(inpu.substr(0,stmp));
-        inpu=inpu.substr(stmp+1,inpu.length());
-        stmp=inpu.find_first_not_of("0123456789");
-	if(stmp==0){return 1;}
-        t=stoi(inpu.substr(0,stmp));
-        inpu=inpu.substr(stmp+1,inpu.length());
-        stmp=inpu.find_first_not_of("0123456789");
-	if(stmp==0){return 1;}
-        s=stoi(inpu.substr(0,stmp));
-        inpu=inpu.substr(stmp+1,inpu.length());
-        stmp=inpu.find_first_not_of("0123456789");
-	if(stmp==0){return 1;}
-        o=stoi(inpu.substr(0,stmp));
+    string inpu=inp;
+    stmp=inpu.find_first_not_of("0123456789");
+	if(stmp<0){return 1;}
+    f=stoi(inpu.substr(0,stmp));
+    inpu=inpu.substr(stmp+1,inpu.length());
+    stmp=inpu.find_first_not_of("0123456789");
+	if(stmp<0){return 1;}
+    t=stoi(inpu.substr(0,stmp));
+    inpu=inpu.substr(stmp+1,inpu.length());
+    stmp=inpu.find_first_not_of("0123456789");
+	if(stmp<0){return 1;}
+    s=stoi(inpu.substr(0,stmp));
+    inpu=inpu.substr(stmp+1,inpu.length());
+    stmp=inpu.find_first_not_of("0123456789");
+	if(stmp>=0){return 1;}
+    o=stoi(inpu.substr(0,stmp));
 	return 0;
     }
+
     void prent(){
         if(f<100){cout<<" ";}if(f<10){cout<<" ";}cout<<int(f)<<".";
         if(t<100){cout<<" ";}if(t<10){cout<<" ";}cout<<int(t)<<".";
@@ -158,10 +168,10 @@ int main(){
     one.prent();
     cout<<"IP2:   ";
     two.prent();
-    tmp=one+two;//sumIP(one,two);
+    tmp=one+two;
     cout<<"Sum:   ";
     tmp.prent();
-    tmp=one-two;//difIP(one,two);
+    tmp=one-two;
     cout<<"Dif:   ";
     tmp.prent();
     if(one>two){
