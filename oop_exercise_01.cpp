@@ -23,15 +23,18 @@ public:
     int setdata(string inp){
 	int stmp;
     string inpu=inp;
-    stmp=inpu.find_first_not_of("0123456789");
+    //stmp=inpu.find_first_not_of("0123456789");
+    stmp=inpu.find(".");
 	if(stmp<0){return 1;}
     f=stoi(inpu.substr(0,stmp));
     inpu=inpu.substr(stmp+1,inpu.length());
-    stmp=inpu.find_first_not_of("0123456789");
+    //stmp=inpu.find_first_not_of("0123456789");
+    stmp=inpu.find(".");
 	if(stmp<0){return 1;}
     t=stoi(inpu.substr(0,stmp));
     inpu=inpu.substr(stmp+1,inpu.length());
-    stmp=inpu.find_first_not_of("0123456789");
+    //stmp=inpu.find_first_not_of("0123456789");
+    stmp=inpu.find(".");
 	if(stmp<0){return 1;}
     s=stoi(inpu.substr(0,stmp));
     inpu=inpu.substr(stmp+1,inpu.length());
